@@ -1,0 +1,82 @@
+{
+    "singleton": false,
+    "dependencies": [],
+    "category": "scheduling",
+    "author": "Georg Sawtschuk",
+    "homepage": "http://razberry.z-wave.me",
+    "icon": "",
+    "version": "1.0.1",
+    "maturity": "stable",
+    "repository": {
+            "type": "git",
+            "source": "https://github.com/Z-Wave-Me/home-automation"
+    },
+    "defaults": {
+        "title": "Turn Off timer by no acitivity",
+        "description": "Turns off automatically devices after a defined time and if no activity",
+        "timeout": 5,
+        "device": "",
+        "lumLevel": 1
+    },
+    "schema": {
+        "description": "Automatically turn of devices after N seconds",
+        "type": "object",
+        "properties": {
+            "sensor": {
+                "field": "enum",
+                "datasource": "namespaces",
+                "enum": "namespaces:devices_sensorBinary:deviceId",
+                "required": true
+            },
+            "lightSensor": {
+                "field": "enum",
+                "datasource": "namespaces",
+                "enum": "namespaces:devices_sensorMultilevel:deviceId",
+                "required": true
+            },
+            "device": {
+                "field": "enum",
+                "datasource": "namespaces",
+                "enum": "namespaces:devices_switchBinary:deviceId,namespaces:devices_switchMultilevel:deviceId",
+                "required": true
+            },
+            "timeout": {
+                "type": "number",
+                "required": true
+            },
+            "lumLevel": {
+                "type": "number",
+                "required": true
+            }
+        },
+        "required": false
+    },
+    "options": {
+        "fields": {
+            "sensor": {
+                "label": "The device which activity resets timer",
+                "datasource": "namespaces",
+                "field": "optionLabels",
+                "optionLabels": "namespaces:devices_sensorBinary:deviceName"
+            },
+            "lightSensor": {
+                "label": "Turn on ony if lightlevel is",
+                "datasource": "namespaces",
+                "field": "optionLabels",
+                "optionLabels": "namespaces:devices_sensorBinary:deviceName"
+            },
+            "device": {
+                "label": "The device to be turned off after the timeout",
+                "datasource": "namespaces",
+                "field": "optionLabels",
+                "optionLabels": "namespaces:devices_switchBinary:deviceName,namespaces:devices_switchMultilevel:deviceName"
+            },
+            "timeout": {
+                "label": "Timout in seconds"
+            },
+            "lumLevel": {
+                "label": "Liminisention level"
+            }
+        }
+    }
+}

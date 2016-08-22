@@ -1,0 +1,100 @@
+{
+	"dependencies": [],
+	"singleton": false,
+	"category": "devices",
+	"author": "Z-Wave.Me",
+	"homepage": "http://razberry.z-wave.me",
+	"icon": "",
+	"version": "1.0.0",
+	"maturity": "stable",
+	"repository": {
+		"type": "git",
+		"source": "https://github.com/Z-Wave-Me/home-automation"
+	},
+	"defaults": {
+		"title": "RGBChanger",
+		"description": "Creates RGB device based on three different dimmers and changes Color timely",
+		"red": null,
+		"green": null,
+		"blue": null,
+		"dimmer": null,
+        "max_value": 100,
+        "timeout": 300
+	},
+	"schema": {
+		"type": "object",
+		"properties": {
+			"red": {
+				"field": "enum",
+				"datasource": "namespaces",
+				"enum": "namespaces:devices_switchMultilevel:deviceId",
+				"required": true
+			},
+			"green": {
+				"field": "enum",
+				"datasource": "namespaces",
+				"enum": "namespaces:devices_switchMultilevel:deviceId",
+				"required": true
+			},
+			"blue": {
+				"field": "enum",
+				"datasource": "namespaces",
+				"enum": "namespaces:devices_switchMultilevel:deviceId",
+				"required": true
+			},
+			"dimmer": {
+				"field": "enum",
+				"datasource": "namespaces",
+				"enum": "namespaces:devices_switchMultilevel:deviceId",
+				"required": true
+			},
+            "max_value": {
+                "type": "number",
+                "required": true
+            },
+            "timeout": {
+                "type": "number",
+                "required": true
+            }
+		},
+		"required": true
+	},
+	"options": {
+		"fields": {
+			"red": {
+				"label": "Red",
+				"type": "select",
+				"datasource": "namespaces",
+				"field": "optionLabels",
+				"optionLabels": "namespaces:devices_switchMultilevel:deviceName"
+			},
+			"green": {
+				"label": "Green",
+				"type": "select",
+				"datasource": "namespaces",
+				"field": "optionLabels",
+				"optionLabels": "namespaces:devices_switchMultilevel:deviceName"
+			},
+			"blue": {
+				"label": "Blue",
+				"type": "select",
+				"datasource": "namespaces",
+				"field": "optionLabels",
+				"optionLabels": "namespaces:devices_switchMultilevel:deviceName"
+			},
+			"dimmer": {
+				"label": "Dimmer",
+				"type": "select",
+				"datasource": "namespaces",
+				"field": "optionLabels",
+				"optionLabels": "namespaces:devices_switchMultilevel:deviceName"
+			},
+            "max_value": {
+                "label": "Max. dimmer value (0-255)"
+            },
+            "timeout": {
+                "label": "Delay between changes (Sec.)"
+            }
+		}
+	}
+}
